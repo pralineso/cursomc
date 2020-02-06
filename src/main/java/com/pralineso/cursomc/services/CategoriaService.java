@@ -11,7 +11,7 @@ import com.pralineso.cursomc.repositories.CategoriaRepository;
 @Service
 public class CategoriaService {
 
-	@Autowired
+	@Autowired //
 	private CategoriaRepository repo;
 	
 	public Categoria buscar(Integer id) {

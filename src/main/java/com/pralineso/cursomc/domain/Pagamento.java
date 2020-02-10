@@ -1,5 +1,7 @@
 package com.pralineso.cursomc.domain;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
@@ -12,7 +14,7 @@ import com.pralineso.cursomc.domain.enums.EstadoPagamento;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-public abstract class  Pagamento {
+public abstract class  Pagamento implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id

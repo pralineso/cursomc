@@ -22,7 +22,7 @@ public class Categoria implements Serializable{
 	private String nome;
 	
 	
-	@JsonManagedReference //referencia gerenciada pelo json//esse aki pq é a "peincipal"
+	@JsonManagedReference //referencia gerenciada pelo json//esse aki pq é a "principal"
 	@ManyToMany(mappedBy = "categorias")
 	private List<Produto> produtos = new ArrayList<>();
 	

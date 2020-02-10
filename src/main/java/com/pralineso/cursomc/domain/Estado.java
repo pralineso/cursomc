@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 public class Estado {
 	private static final long serialVersionUID = 1L;
@@ -18,6 +20,7 @@ public class Estado {
 	private Integer id;
 	private String nome;
 	
+	@JsonBackReference
 	@OneToMany(mappedBy="estado")//noem do atributo mateado da outra classe
 	private List<Cidade> cidades = new ArrayList<>();
 	

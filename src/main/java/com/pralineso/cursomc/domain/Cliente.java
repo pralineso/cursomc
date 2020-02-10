@@ -14,6 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.pralineso.cursomc.domain.enums.TipoCliente;
 
 @Entity
@@ -28,6 +29,7 @@ public class Cliente {
 	private String cpfOuCnpj;
 	private Integer tipo;
 	
+	@JsonManagedReference //isso aki  q é a parada da "contra serializacao json ciclica "//da lado do cliente q o principal
 	@OneToMany(mappedBy = "cliente")
 	private List<Endereco> enderecos = new ArrayList<>();
 	

@@ -1,5 +1,7 @@
 package com.pralineso.cursomc.domain;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -7,10 +9,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-public class Endereco {
+public class Endereco implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	
@@ -23,7 +25,7 @@ public class Endereco {
 	private String bairro;
 	private String cep;
 	
-	@JsonBackReference//isso aki tbm é a parada da "contra serializacao json ciclica "
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="cliente_id")
 	private Cliente cliente;
@@ -32,8 +34,7 @@ public class Endereco {
 	@JoinColumn(name="cidade_id")
 	private Cidade cidade;
 	
-	private Endereco() {
-		
+	public Endereco(){
 	}
 
 	public Endereco(Integer id, String logradouro, String numero, String complemento, String bairro, String cep, Cliente cliente, Cidade cidade) {

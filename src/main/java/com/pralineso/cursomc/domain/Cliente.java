@@ -1,5 +1,6 @@
 package com.pralineso.cursomc.domain;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -11,15 +12,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.pralineso.cursomc.domain.enums.TipoCliente;
 
 @Entity
-public class Cliente {
+public class Cliente implements Serializable{
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -30,7 +29,6 @@ public class Cliente {
 	private String cpfOuCnpj;
 	private Integer tipo;
 	
-	@JsonManagedReference //isso aki  q é a parada da "contra serializacao json ciclica "//da lado do cliente q o principal
 	@OneToMany(mappedBy = "cliente")
 	private List<Endereco> enderecos = new ArrayList<>();
 	
@@ -40,7 +38,7 @@ public class Cliente {
 	@CollectionTable(name="TELEFONE")
 	private Set<String> telefone = new HashSet<>();
 	
-	@JsonBackReference
+	@JsonIgnore
 	@OneToMany(mappedBy = "cliente")
 	private List<Pedido> pedidos = new ArrayList<>();
 	

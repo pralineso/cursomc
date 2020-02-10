@@ -10,8 +10,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 @Entity//entidade/tabela
 public class Categoria implements Serializable{
 	private static final long serialVersionUID = 1L;
@@ -22,7 +20,6 @@ public class Categoria implements Serializable{
 	private String nome;
 	
 	
-	@JsonManagedReference //referencia gerenciada pelo json//esse aki pq é a "principal"
 	@ManyToMany(mappedBy = "categorias")
 	private List<Produto> produtos = new ArrayList<>();
 	

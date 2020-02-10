@@ -1,5 +1,6 @@
 package com.pralineso.cursomc.domain;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,10 +10,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-public class Estado {
+public class Estado implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
@@ -20,7 +21,7 @@ public class Estado {
 	private Integer id;
 	private String nome;
 	
-	@JsonBackReference
+	@JsonIgnore
 	@OneToMany(mappedBy="estado")//noem do atributo mateado da outra classe
 	private List<Cidade> cidades = new ArrayList<>();
 	

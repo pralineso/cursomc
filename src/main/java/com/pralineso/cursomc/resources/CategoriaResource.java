@@ -3,6 +3,7 @@ package com.pralineso.cursomc.resources;
 import java.net.URI;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -45,4 +46,11 @@ public class CategoriaResource {
 		obj = service.update(obj);
 		return ResponseEntity.noContent().build();
 	}
+	
+	//mwtodo para deletar
+		@RequestMapping(value="/{id}", method=RequestMethod.DELETE)
+		public ResponseEntity<Void> delete(@PathVariable Integer id){
+			service.delete(id);
+			return ResponseEntity.noContent().build();
+		}
 }

@@ -11,7 +11,6 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import com.pralineso.cursomc.domain.Cliente;
-import com.pralineso.cursomc.domain.Cliente;
 import com.pralineso.cursomc.dto.ClienteDTO;
 import com.pralineso.cursomc.repositories.ClienteRepository;
 import com.pralineso.cursomc.services.exceptions.DataIntegrityException;
@@ -32,7 +31,7 @@ public class ClienteService {
 	public Cliente update(Cliente obj) {
 		Cliente newObj = find(obj.getId());
 		updateData(newObj, obj);
-		return repo.save(obj);
+		return repo.save(newObj);
 	}
 	
 	public void delete(Integer id) {

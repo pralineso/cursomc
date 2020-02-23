@@ -37,6 +37,12 @@ public class ClienteResource {
 		Cliente obj = service.find(id);
 		return ResponseEntity.ok().body(obj);// pega o q vir no ?? e joga como corpo da pagina
 	}
+	
+	@RequestMapping(value = "/email", method = RequestMethod.GET)
+	public ResponseEntity<Cliente> find(@RequestParam(value ="value") String email) {
+		Cliente obj = service.findByEmail(email);
+		return ResponseEntity.ok().body(obj);
+	}
 
 	// metodo pra inserir cliente(ja vai com as entidades
 	// realcionadas|telefone/endereco )
